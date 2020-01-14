@@ -1,5 +1,6 @@
 ---
 layout: post
+category: Problem Solving
 title: Heechan's blog
 ---
 # 테스트
