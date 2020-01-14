@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Heechan's blog
-excerpt_separator:  <!--more-->
 ---
 # 테스트
 
