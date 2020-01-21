@@ -13,12 +13,16 @@ baseurl:          ''
                   # If you want to move just the blog index pages but keep
                   # other pages at root, see the paginate_path and
                   # sidebar_blog_link below.
-comments:
-  provider : "disqus" # 블로그 댓글 기능 false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "custom"
-  disqus:
-    shorname: disqus_12Q5EET3wS
     
-
+# Disqus
+disqus:
+  enable: true
+  shortname: https-heechan3006-github-io
+  count: true
+  # hide comments (visitors need to click to load the comments)
+  # count need to be false when hide is true
+  hide: false
+  
 author:
   name:           'Andrew Fong'
   url:            https://twitter.com/fongandrewc
@@ -39,31 +43,11 @@ sidebar_home_link:  true
                                 # set this to the root of the paginate_path
                                 # to enable a separate blog link.
                          
-# Defaults
 defaults:
-  # _posts
-  - scope:
+  -
+    scope:
       path: ""
-      type: posts
+      type: "posts"
     values:
-      layout: single
-      author_profile: true
-      read_time: true
+      layout: "post"
       comments: true
-      share: true
-      related: true
-      toc_ads: true
-      toc_sticky: true
-
-  # _pages
-  - scope:
-      path: ""
-      type: pages
-    values:
-      layout: single
-      author_profile: true
-      read_time: false
-      comments: false
-      share: true
-      related: false
-
