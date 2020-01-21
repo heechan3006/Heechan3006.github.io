@@ -18,10 +18,10 @@ baseurl:          ''
 disqus:
   enable: true
   shortname: https-heechan3006-github-io
-  count: true
+  count: false
   # hide comments (visitors need to click to load the comments)
   # count need to be false when hide is true
-  hide: false
+  hide: true
   
 author:
   name:           'Andrew Fong'
