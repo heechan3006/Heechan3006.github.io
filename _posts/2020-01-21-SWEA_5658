@@ -1,0 +1,90 @@
+---
+layout: post
+category: Problem Solving
+title: SWEA 5658 
+---
+# 보물상자 비밀번호
+[문제출처](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWXRUN9KfZ8DFAUo)
+
+1.설계(20)
+  - 문제 해석
+    - 각 변에 16진수 숫자(0 ~ F) 가 적혀있는 보물상자가 있다.
+    - 이 상자를 시계방향으로 돌릴 수 있고, 돌릴 때마다 한칸씩 회전한다.
+    - 비밀번호 : 보물상자에 적혀있는 숫자로 만들 수 있는 수 중 **K**번째 큰 수를 10진수로 만든 수
+    - **주의** : 동일한 수가 중복 될 수 있다. 중복 수를 세지 않도록 주의
+    - 8 <= N <= 28 (4의 배수)
+  - 설계
+    - N/4 -1 번 회전 수행
+    - 4개의 변에서 16->10 진수 변환 후, 배열에 저장
+    - 중복되는 수를 세지 포함하지 않도록 해결을 해야 한다.
+      - 첫 번째 방법으로 카운팅 sort를 생각해 보았다. 그러나 16^7(약 2억 6천) 을 수용할 수 있는 배열 크기를 선언해야 하므로 비효율적이라고 판단하였다.
+      - 두 번째 방법으로 set을 생각해보았다. 공간에 제약이 없고, 중복 되는 수를 방지할 수 있다. 
+    - 중복되는 수인 지 체크하고, 새로운 수일 경우 벡터에 저장을 한다. 최종적으로 정렬을 하여 K번째로 큰 수를 찾는다.
+2.구현(20)
+  - 코드
+    ```cpp
+    #include <iostream>
+    #include <string>
+    #include <cstring>
+    #include <set>
+    #include <vector>
+    #include <algorithm>
+
+    using namespace std;
+
+    vector<int> v;
+    set<int> st;
+    int N, K;
+    void rotate(string& input) {
+      input = input[input.length() - 1] + input.substr(0, input.length() - 1);
+    }
+    int convert(string sub_s) {
+      int num = 0;
+      for (int i = 0; i < sub_s.length(); i++) {
+        if ('A' <= sub_s[i] && sub_s[i] <= 'F') {
+          num = num * 16 + (10 + sub_s[i] - 'A');
+        }
+        else {
+          num = num * 16 + (sub_s[i] - '0');
+        }
+      }
+      return num;
+    }
+    int main() {
+      ios::sync_with_stdio(false);
+      cin.tie(0);
+      int t;
+      cin >> t;
+      for (int test_case = 1; test_case <= t; test_case++) {
+        st.clear();
+        v.clear();
+        string input;
+        cin >> N >> K;
+        cin >> input;
+        int cnt = N / 4;
+        while (cnt) {
+          if (cnt != N / 4) rotate(input);
+          for (int i = 0; i < N; i += N / 4) {
+            int num = convert(input.substr(i, N / 4));
+            if (st.count(num) == 0) {
+              st.insert(num);
+              v.push_back(num);
+            }
+          }
+          cnt--;
+        }
+        sort(v.begin(), v.end());
+        cout << "#"<< test_case<<" "<< v[v.size() - K] << "\n";
+      }
+
+      return 0;
+    }
+    ```
+  - 디버깅
+    - cnt 변수에 몇번 rotate할 것인지 선언해줘야하는데, N/4-1로 착각하여 디버깅을 통해 수정하였다.
+  - 제출결과
+    - 7ms
+3.마무리
+  구현력이 절실히 부족함을 느낀 나는 SWEA 모의 테스트 문제를 다시 한번 풀어보고자 한다.
+  어려운 점은 없었고 중복을 해결할 방안을 set을 쓰지 않고 다른 방법으로 하고자 하였으나, 더 최적화된 방법이 생각나지 않았다.
+  또한, B형 테스트를 동시에 준비하기 위해서 stl을 쓰지 않고 코딩하는 연습을 해야 할 것 같다.
