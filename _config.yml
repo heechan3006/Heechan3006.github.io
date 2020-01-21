@@ -3,30 +3,21 @@ markdown:         kramdown
 highlighter:      rouge
 
 # Setup
-title:            Heechan
+title:            heechan
 tagline:          'A Jekyll theme'
 description:      ''
-url:              https://fongandrew.github.io
+url:              https://heechan3006.github.io
 baseurl:          ''
                   # the optional subpath of your site, e.g. "/blog"
                   # NB: This applies to all pages in your Jekyll site.
                   # If you want to move just the blog index pages but keep
                   # other pages at root, see the paginate_path and
                   # sidebar_blog_link below.
-    
-# Disqus
-disqus:
-  enable: true
-  shortname: https-heechan3006-github-io
-  # hide comments (visitors need to click to load the comments)
-  hide: false
-  # count need to be false when hide is true
-  count: true
   
   
 author:
-  name:           'Andrew Fong'
-  url:            https://twitter.com/fongandrewc
+  name:           'heechan'
+  url:            https://heechan3006.github.io
 
 paginate:         5
 # paginate_path:    '/page:num'
@@ -52,3 +43,13 @@ defaults:
     values:
       layout: "post"
       comments: true
+
+
+# Disqus
+disqus:
+  enable: true
+  shortname: https-heechan3006-github-io
+  # hide comments (visitors need to click to load the comments)
+  hide: false
+  # count need to be false when hide is true
+  count: true
