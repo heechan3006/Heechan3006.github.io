@@ -1,0 +1,131 @@
+---
+layout: post
+category: Problem Solving
+title: SWEA 5653
+tags : [SWEA]
+---
+### 줄기세포배양
+[문제출처](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWXRJ8EKe48DFAUo)
+
+1.설계(22분)
+
+  - 문제 해석
+  
+    - 각 줄기세포는 생명력이라는 수치를 가지고 있다.
+    - 초기에는 비활성 상태로 생명력 X시간동안 비활성 상태로 되어있고, X시간이 지나는 순간 활성 상태로 변한다.
+    - 활성화 세포는 상,하,좌,우로 한칸씩 번식한다. 번식한 세포는 비활성상태이다.
+    - 번식할 그리드 셀에 이미 세포가 존재하는 경우 번식하지 않는다.
+    - 두 개 이상의 줄기세포가 하나의 그리드 셀에 동시에 번식하려는 경우, 생명력 수치가 높은 세포가 번식한다.
+    - 배양 용기의 크기는 무한대이다.
+    - K시간 후 **살아있는 세포(비활성 + 활성)**의 개수를 구하라.
+    - N,M <= 50 , K <= 300 , 1<= X <= 10
+  
+  - 설계
+  
+    - 배양 용기의 크기가 무한대이지만 시간 K가 한정되어있으므로 300*2+50 만큼의 공간이 필요하다. 각 좌표의 세포의 유무를 판단하기 
+    위해서 check배열을 이용한다.
+    - 생명력 수치가 높은 세포부터 진행을 해야한다 -> 각 테스트케이스에 존재하는 세포의 생명력 수치를 벡터에 저장 후 이용한다.
+    - 생명력 수치*2 만큼의 시간동안 살아있기 때문에 {x, y, 2 * 생명력 수치(남은 시간)} 정보를 큐[생명력수치]에 저장한다.
+    - 남은 시간이 생명력 수치와 같아질 경우 상하좌우로 번식 할 수 있는지 체크후 번식을 진행한다.
+    
+2.구현(30분)
+
+  - 코드
+  
+```cpp
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <memory.h>
+
+#define MAXN 700
+#define OFFSET 350
+using namespace std;
+
+bool check[MAXN][MAXN];
+
+struct node {
+	int x;
+	int y;
+	int remain;
+};
+
+int dx[] = { 0,0,1,-1 };
+int dy[] = { 1,-1,0,0 };
+
+int N, M, K;
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(0);
+	int t;
+	cin >> t;
+	for (int test_case = 1; test_case <= t; test_case++) {
+		vector<int> v;
+		queue<node> q[11];
+		
+		cin >> N >> M >> K;
+		memset(check, false, sizeof(check));
+		bool num[11] = { false, };
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < M; j++) {
+				int tmp;
+				cin >> tmp;
+				if (tmp) {
+					int x = i + OFFSET;
+					int y = j + OFFSET;
+					check[x][y] = true;
+					q[tmp].push({ x,y,tmp * 2 });
+					num[tmp] = true;
+				}
+			}
+		}
+		for (int i = 1; i <= 10; i++) {
+			if (num[i]) v.push_back(i);
+		}
+
+		while (K--) {
+			for (int i = v.size() - 1; i >= 0; i--) {
+				int q_size = q[v[i]].size();
+				while (q_size--) {
+					int x = q[v[i]].front().x;
+					int y = q[v[i]].front().y;
+					int remain = q[v[i]].front().remain;
+					q[v[i]].pop();
+					remain--;
+					if (remain == v[i] -1) {
+						
+						for (int k = 0; k < 4; k++) {
+							int nx = x + dx[k];
+							int ny = y + dy[k];
+							if (!check[nx][ny]) {
+								check[nx][ny] = true;
+								q[v[i]].push({ nx,ny,v[i] * 2 });
+							}
+						}
+					}
+					if (remain > 0) q[v[i]].push({ x,y,remain});
+				}
+			}
+		}
+		int ans = 0;
+		for (int i = 0; i < v.size(); i++) {
+			ans += q[v[i]].size();
+		}
+		cout << "#"<< test_case<<" "<<ans << "\n";
+	}
+	
+	return 0;
+}```
+  - 디버깅
+  
+    vector및 queue 초기화를 하지 않은 실수를 하였다. q 배열을 10까지만 설정하는 실수를 해서 디버깅을 통해 수정하였다.
+    
+  - 제출결과
+
+    196ms
+
+3.마무리
+
+- 해당 문제는 단순한 시뮬레이션 문제로써, 생명력 수치가 높은 순서대로 큐를 작동시키는 것이 포인트였다. 
+- 아직 초기화나 범위 설정의 잦은 실수가생긴다. 이를 항상 유의해서 봐야할 것 같다.
+- 최적화를 시켜보기 위해서 벡터에 생명력수치를 저장해 보았으나 10부터 0까지 반복으로 돌리는 코드와 시간차이가 거의 없었다.
