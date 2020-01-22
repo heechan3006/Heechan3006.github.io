@@ -54,4 +54,4 @@ disqus:
   # count need to be false when hide is true
   count: true
 
-google_fonts: "Noto+Serif+KR&display=swap"
+google_fonts: "Lato&display=swap"
