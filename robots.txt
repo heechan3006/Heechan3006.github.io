@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://heechan3006.github.io/sitemap.xml
