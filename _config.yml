@@ -19,7 +19,7 @@ author:
   name:           'heechan'
   url:            https://heechan3006.github.io
 
-paginate:         5
+paginate:         10
 # paginate_path:    '/page:num'
                     # Or '/blog/page:num' if you want to move your index pages
 
@@ -37,7 +37,6 @@ sidebar_home_link:  true
                                 # to enable a separate blog link.
                          
 defaults:
-  -
     scope:
       path: ""
       type: "posts"
@@ -45,14 +44,17 @@ defaults:
       layout: "post"
       comments: true
 
+    sitemap:
+      changepreq: daily
+      priority: 1.0
+      
+    # Disqus
+    disqus:
+      enable: true
+      shortname: https-heechan3006-github-io
+      # hide comments (visitors need to click to load the comments)
+      hide: false
+      # count need to be false when hide is true
+      count: true
 
-# Disqus
-disqus:
-  enable: true
-  shortname: https-heechan3006-github-io
-  # hide comments (visitors need to click to load the comments)
-  hide: false
-  # count need to be false when hide is true
-  count: true
-
-google_fonts: "Lato&display=swap"
+    google_fonts: "Lato&display=swap"
