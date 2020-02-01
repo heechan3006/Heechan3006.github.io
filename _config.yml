@@ -42,7 +42,8 @@ disqus:
   # hide comments (visitors need to click to load the comments)
   hide: false
   # count need to be false when hide is true
-  count: true                     
+  count: true
+  comments : true
 
 sitemap:
       changepreq: daily
