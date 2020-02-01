@@ -7,7 +7,7 @@ title:            heechan
 tagline:          'A Jekyll theme'
 description:      ''
 url:              https://heechan3006.github.io
-baseurl:          ''
+baseurl:          'https://heechan3006.github.io'
                   # the optional subpath of your site, e.g. "/blog"
                   # NB: This applies to all pages in your Jekyll site.
                   # If you want to move just the blog index pages but keep
