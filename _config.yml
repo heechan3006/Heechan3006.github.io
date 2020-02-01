@@ -36,8 +36,9 @@ sidebar_home_link:  true
                                 # set this to the root of the paginate_path
                                 # to enable a separate blog link.
                                 
-disqus_shortname : https-heechan3006-github-io
 
+disqus:
+  shortname: https-heechan3006-github-io
 sitemap:
       changepreq: daily
       priority: 1.0
@@ -50,8 +51,6 @@ defaults:
       layout: "post"
       comments: true
       hide: false
-      read_time: true
-      share: true
-      related: true
+      
       
 
