@@ -35,15 +35,18 @@ sidebar_home_link:  true
                                 # page. If you change your paginate_path,
                                 # set this to the root of the paginate_path
                                 # to enable a separate blog link.
-# Disqus
-disqus:
-  enable: true
-  shortname: https-heechan3006-github-io
-  # hide comments (visitors need to click to load the comments)
-  hide: false
-  # count need to be false when hide is true
-  count: true
-  comments : true
+comments:
+  provider : "disqus"
+  
+  # Disqus
+  disqus:
+    enable: true
+    shortname: https-heechan3006-github-io
+    # hide comments (visitors need to click to load the comments)
+    hide: false
+    # count need to be false when hide is true
+    count: true
+    comments : true
 
 sitemap:
       changepreq: daily
@@ -61,4 +64,4 @@ defaults:
       share: true
       related: true
       
-google_fonts: "Lato&display=swap"
+
