@@ -13,6 +13,8 @@ layout: default
     {% include post-tags.html post=page %}
   </div>
 
+  {% if page.comments %}
   {% include comments.html %}
+  {% endif %}
   {% include related_posts.html %}
 </div>
