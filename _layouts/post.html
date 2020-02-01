@@ -13,10 +13,9 @@ layout: default
     {% include post-tags.html post=page %}
   </div>
 
-  {% if page.comments %}
+  
   <div id="post-disqus" class="container">
   {% include comments.html %}
   </div>
-  {% endif %}
   {% include related_posts.html %}
 </div>
