@@ -13,7 +13,7 @@ $cyan: #75b5aa !default;
 $blue: #268bd2 !default;
 $brown: #8f5536 !default;
 
-$root-font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif !default;
+$root-font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif !default;
 $root-font-size: 0.9rem !default;
 $root-line-height: 1.5 !default;
 
@@ -41,7 +41,7 @@ $default-box-shadow: $box-shadow-size
                      $box-shadow-size
                      rgba(0, 0, 0, $box-shadow-opacity);
 
-$code-font-family: Menlo, Monaco, D2Coding, 'D2 coding', "Consolas", monospace !default;
+$code-font-family: Menlo, Monaco, "Consolas", monospace !default;
 $code-color: #bf616a !default;
 
 // Hyde theming
