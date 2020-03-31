@@ -34,7 +34,7 @@ article + *, .post-body ~ section {
 
 // h1-size h2
 h2.post-title, h2.page-title {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 // Meta data line below post title
@@ -70,12 +70,15 @@ h2.post-title, h2.page-title {
   }
 
   li {
+
     small {
-      font-size: 75%;
+      font-size: 1.0em;
       color: #999;
       white-space: nowrap;
     }
-
+    
+    font-size: 0.5em;
+    
     a:hover {
       color: $link-color;
       text-decoration: none;
