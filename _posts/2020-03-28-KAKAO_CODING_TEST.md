@@ -360,4 +360,3 @@ int solution(vector<int> stones, int k) {
 
 ```
 
-#### 마무리
