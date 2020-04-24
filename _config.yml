@@ -53,5 +53,12 @@ defaults:
       comments: true
       hide: false
       excerpt_separator: <!--more-->
+      use_math: true
       
 
+# Conversion
+markdown: kramdown
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
